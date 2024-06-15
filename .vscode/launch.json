@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: Django",
+            "type": "debugpy",
+            "request": "launch",
+            "args": [
+                "runserver",
+                "8001",
+                "--noreload"
+            ],
+            "django": true,
+            "autoStartBrowser": false,
+            "program": "${workspaceFolder}/app/manage.py"
+        },
+        {
+            "name": "Python: Execute Commands",
+            "type": "debugpy",
+            "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "SQL_HOST": "localhost",
+                "REDIS_DB_HOST": "localhost",
+            },
+            "program": "${workspaceFolder}/app/manage.py",
+            "args": [
+                // "makemigrations",
+                "migrate",
+                // "createsuperuser"
+            ],
+            "django": true,
+            "justMyCode": false
+        },
+    ]
+}
