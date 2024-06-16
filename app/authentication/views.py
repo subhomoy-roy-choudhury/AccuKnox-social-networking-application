@@ -2,15 +2,16 @@ from rest_framework import generics, status, views, permissions
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenRefreshView
 from django.contrib.auth import authenticate
 from .models import AuthUser
-from .serializers import CustomUserSerializer
+from .serializers import AuthUserSerializer
 
 
 # Create your views here.
 class UserRegistrationView(generics.CreateAPIView):
     queryset = AuthUser.objects.all()
-    serializer_class = CustomUserSerializer
+    serializer_class = AuthUserSerializer
     permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
@@ -20,7 +21,7 @@ class UserRegistrationView(generics.CreateAPIView):
         refresh = RefreshToken.for_user(user)
         return Response(
             {
-                "user": CustomUserSerializer(user).data,
+                "user": AuthUserSerializer(user).data,
                 "refresh": str(refresh),
                 "access": str(refresh.access_token),
             },
@@ -50,8 +51,14 @@ class UserLoginView(views.APIView):
 
 
 class UserProfileView(generics.RetrieveUpdateAPIView):
-    serializer_class = CustomUserSerializer
+    serializer_class = AuthUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         return self.request.user
+
+class AuthTokenRefreshView(TokenRefreshView):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        response.data['custom_message'] = 'Refresh successful'
+        return response

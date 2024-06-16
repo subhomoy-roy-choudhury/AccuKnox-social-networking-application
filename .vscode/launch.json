@@ -5,6 +5,12 @@
             "name": "Python Debugger: Django",
             "type": "debugpy",
             "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {
+                "DEBUG": "1",
+                "SQL_HOST": "127.0.0.1",
+                "SQL_DATABASE": "db"
+            },
             "args": [
                 "runserver",
                 "8001",
@@ -20,8 +26,7 @@
             "request": "launch",
             "envFile": "${workspaceFolder}/.env",
             "env": {
-                "SQL_HOST": "localhost",
-                "REDIS_DB_HOST": "localhost",
+                "SQL_HOST": "127.0.0.1",
             },
             "program": "${workspaceFolder}/app/manage.py",
             "args": [

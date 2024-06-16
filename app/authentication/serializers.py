@@ -2,10 +2,11 @@ from rest_framework import serializers
 from .models import AuthUser
 
 
-class CustomUserSerializer(serializers.ModelSerializer):
+class AuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = AuthUser
-        fields = ("id", "username", "email", "firstname", "lastname")
+        fields = ("id", "username", "email", "firstname", "lastname", "password")
+        extra_kwargs = {"password": {"write_only": True, "min_length": 8}}
 
     def validate_username(self, value):
         # Additional validation for username
@@ -26,3 +27,29 @@ class CustomUserSerializer(serializers.ModelSerializer):
         if not value.isalpha():
             raise serializers.ValidationError("Lastname must contain only letters.")
         return value
+
+    def create(self, validated_data):
+        # Create a new user instance with a hashed password
+        user = AuthUser(
+            username=validated_data["username"],
+            email=validated_data["email"],
+            firstname=validated_data["firstname"],
+            lastname=validated_data["lastname"],
+        )
+        user.set_password(validated_data["password"])  # Hash the password
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        # Update user information, handling the password correctly
+        instance.username = validated_data.get("username", instance.username)
+        instance.email = validated_data.get("email", instance.email)
+        instance.firstname = validated_data.get("firstname", instance.firstname)
+        instance.lastname = validated_data.get("lastname", instance.lastname)
+
+        # Hash new password if it's provided
+        if "password" in validated_data:
+            instance.set_password(validated_data["password"])
+
+        instance.save()
+        return instance
