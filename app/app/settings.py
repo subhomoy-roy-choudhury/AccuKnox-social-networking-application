@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
-LOCAL_APPS = ["authentication"]
+LOCAL_APPS = ["authentication", "network"]
 
 SYSTEM_APPS = [
     "django.contrib.admin",
