@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.11-slim-buster
+FROM python:3.11-slim-bullseye
 
 # set work directory
 WORKDIR /usr/src/app
@@ -19,7 +19,6 @@ RUN poetry config virtualenvs.create false
 COPY pyproject.toml poetry.lock* /usr/src/app/
 
 # Handle mysqlclient as a special case if necessary
-# RUN pip wheel --no-cache-dir --use-pep517 "mysqlclient (==2.2.4)"
 RUN poetry install --no-dev --no-interaction --no-ansi
 
 # copy entrypoint.sh
