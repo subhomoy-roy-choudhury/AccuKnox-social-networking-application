@@ -1,3 +1,4 @@
+import re
 from rest_framework import serializers
 from .models import AuthUser
 
@@ -26,6 +27,14 @@ class AuthUserSerializer(serializers.ModelSerializer):
         # Validate that lastname contains only letters
         if not value.isalpha():
             raise serializers.ValidationError("Lastname must contain only letters.")
+        return value
+
+    def validate_email(self, value):
+        # Validate the email format using a regular expression.
+        email_regex = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+        if not re.match(email_regex, value):
+            raise serializers.ValidationError("Invalid Email format")
+
         return value
 
     def create(self, validated_data):
