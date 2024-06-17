@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "25c81a02-07f8-4308-8f95-3df8110b8aae",
+		"name": "Social Networking AccuKnox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14683435"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Subhomoythree\",\n    \"lastname\": \"Roy\",\n    \"username\": \"subhomoythree\",\n    \"password\": \"45subho2000\",\n    \"email\": \"subhomoyrchoudhury3@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"subhomoy\",\n    \"password\": \"45subho2000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTYzNTgwLCJpYXQiOjE3MTg1NjMyODAsImp0aSI6IjQwY2YxZThiMGE2ZDQwM2RhM2Q3OTBlNDExYjY5YjJmIiwidXNlcl9pZCI6M30.SrVSw9zotFByTFmc4YI62q0QCZZfqBzsHtpqmGM2ols",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/profile/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"profile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTY0OTc4LCJpYXQiOjE3MTg1NjQ2NzgsImp0aSI6IjY1NDRlNTliNjUwOTRhMWVhZGNiMDNmOGMzYTJlNzI2IiwidXNlcl9pZCI6M30.aLdmCxoJ8Ya2CXPfiZIonUKoytgILz7tzlViFtCgClM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/api/users/?q=subhomoyrchoudhury3@gmail.com&limit=3&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"users",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "subhomoyrchoudhury3@gmail.com"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODYzMjI0MCwiaWF0IjoxNzE4NTQ1ODQwLCJqdGkiOiIwYjUxNTlhYjA5OWM0ODAyOTY5YzU5MDYwYjRjOGU1YSIsInVzZXJfaWQiOjN9.QMNXt6ShSICRZQwqQgTQw9doM8TtkVjYq4WAJSDdL_s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTk4NjQxLCJpYXQiOjE3MTg1OTgzNDEsImp0aSI6ImMwN2YyOWFiYjczMDQzZDM5M2YxYmI4OGQyNzU3MzZhIiwidXNlcl9pZCI6M30.C-2XHme58SH18Urel5c1K0li0BJ__58v-EZUSTj1pNA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"receiver_id\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/friends/requests/send/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"friends",
+						"requests",
+						"send",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend Request Action",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTk3MjcwLCJpYXQiOjE3MTg1OTY5NzAsImp0aSI6IjAwYjA0ODNhZmUxMDQzZTQ5NjNhNzY5ODFkNTFhOWNiIiwidXNlcl9pZCI6Nn0.I5pS2OEjSA9nOm6SmS2P7zi9_LWeYkirZpro_m4Y_7c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODYzMjI0MCwiaWF0IjoxNzE4NTQ1ODQwLCJqdGkiOiIwYjUxNTlhYjA5OWM0ODAyOTY5YzU5MDYwYjRjOGU1YSIsInVzZXJfaWQiOjN9.QMNXt6ShSICRZQwqQgTQw9doM8TtkVjYq4WAJSDdL_s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/friends/requests/1/accept/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"friends",
+						"requests",
+						"1",
+						"accept",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Friends",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTk5NjQwLCJpYXQiOjE3MTg1OTkzNDAsImp0aSI6ImY3NzcwMjEyMGZmYTQ5NGFhYzVhMGNjMjgxMGYwMTJmIiwidXNlcl9pZCI6M30.Slt3MVKr_YWAmzjRQHVFPhF5ZR2zSGqIth1wLbNXweU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODYzMjI0MCwiaWF0IjoxNzE4NTQ1ODQwLCJqdGkiOiIwYjUxNTlhYjA5OWM0ODAyOTY5YzU5MDYwYjRjOGU1YSIsInVzZXJfaWQiOjN9.QMNXt6ShSICRZQwqQgTQw9doM8TtkVjYq4WAJSDdL_s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/friends/?limit=2&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"friends",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pending Friend Requests",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE4NTk5NDMzLCJpYXQiOjE3MTg1OTkxMzMsImp0aSI6ImVkN2RiMTFlMTY3ZDRiNDhhMWU0YzczOWY1ZmRkMDMxIiwidXNlcl9pZCI6M30.LA9E0rdFhFG3JLmvSi13Cbw62d1vcWD1bFMpuEW4eZI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxODYzMjI0MCwiaWF0IjoxNzE4NTQ1ODQwLCJqdGkiOiIwYjUxNTlhYjA5OWM0ODAyOTY5YzU5MDYwYjRjOGU1YSIsInVzZXJfaWQiOjN9.QMNXt6ShSICRZQwqQgTQw9doM8TtkVjYq4WAJSDdL_s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/api/friends/requests/?limit=1&offset=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"friends",
+						"requests",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
