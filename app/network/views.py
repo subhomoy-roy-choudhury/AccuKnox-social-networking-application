@@ -3,14 +3,14 @@ from django.db.models import Q
 from .models import Friendship
 from .serializers import FriendshipSerializer
 from authentication.serializers import AuthUserSerializer
-from rest_framework.throttling import UserRateThrottle
+from .throttles import FriendRequestRateThrottle
 from rest_framework.pagination import LimitOffsetPagination
 
 # Create your views here.
 
 
 class SendFriendRequestView(views.APIView):
-    # throttle_classes = [UserRateThrottle
+    throttle_classes = [FriendRequestRateThrottle]
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
