@@ -17,7 +17,7 @@
                 "--noreload"
             ],
             "django": true,
-            "autoStartBrowser": false,
+            "justMyCode": false,
             "program": "${workspaceFolder}/app/manage.py"
         },
         {
